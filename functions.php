@@ -2,8 +2,14 @@
 
 function buson_setup() {
 
+    load_theme_textdomain( 'buson', get_template_directory() . '/languages' );
+
     add_theme_support('title-tag');
-    add_theme_support('post-thumbnails', array('slider', 'services'));
+    add_theme_support('post-thumbnails', array('post', 'slider', 'services', 'cases'));
+
+    register_nav_menus(array(
+        'primary-menu' => __('Primary Menu', 'buson')
+    ));
 
 }
 add_action('after_setup_theme', 'buson_setup');
@@ -101,5 +107,39 @@ function buson_cpt() {
         'supports'           => array( 'title', 'thumbnail', 'editor'),
     );
     register_post_type( 'services', $args );
+
+    $labels = array(
+        'name'                  => _x( 'Cases', 'Post type general name', 'buson' ),
+        'singular_name'         => _x( 'Case', 'Post type singular name', 'buson' ),
+        'menu_name'             => _x( 'Case', 'Admin Menu text', 'buson' ),
+        'name_admin_bar'        => _x( 'Case', 'Add New on Toolbar', 'textdomain' ),
+        'add_new'               => __( 'Add New', 'case' ),
+        'add_new_item'          => __( 'Add New Case', 'buson' ),
+        'new_item'              => __( 'New Case', 'buson' ),
+        'edit_item'             => __( 'Edit Case', 'buson' ),
+        'view_item'             => __( 'View Case', 'buson' ),
+        'all_items'             => __( 'All Case', 'buson' ),
+        'search_items'          => __( 'Search Case', 'buson' ),
+        'parent_item_colon'     => __( 'Parent Case:', 'buson' ),
+        'not_found'             => __( 'No Case found.', 'buson' ),
+        'not_found_in_trash'    => __( 'No Case found in Trash.', 'buson' )
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array( 'slug' => 'cases' ),
+        'capability_type'    => 'post',
+        'has_archive'        => true,
+        'hierarchical'       => false,
+        'menu_position'      => null,
+        'supports'           => array( 'title', 'thumbnail', 'editor', 'excerpt'),
+        'show_in_rest' => true
+    );
+    register_post_type( 'cases', $args );
 }
 add_action('init', 'buson_cpt');

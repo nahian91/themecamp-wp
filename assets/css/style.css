@@ -2609,7 +2609,7 @@ hr {
   color: #ff656a;
 }
 
-.main-header .main-menu ul ul.submenu {
+.main-header .main-menu ul ul.sub-menu {
   position: absolute;
   width: 170px;
   background: #fff;
@@ -2627,19 +2627,19 @@ hr {
   transition: all 0.3s ease-out 0s;
 }
 
-.main-header .main-menu ul ul.submenu > li {
+.main-header .main-menu ul ul.sub-menu > li {
   margin-left: 7px;
   display: block;
 }
 
-.main-header .main-menu ul ul.submenu > li > a {
+.main-header .main-menu ul ul.sub-menu > li > a {
   padding: 6px 10px !important;
   font-size: 14px;
   color: #0b1c39;
   text-transform: capitalize;
 }
 
-.main-header .main-menu ul ul.submenu > li > a:hover {
+.main-header .main-menu ul ul.sub-menu > li > a:hover {
   color: #ff656a;
   background: none;
 }
@@ -2665,7 +2665,7 @@ hr {
   -o-transform: rotateY(180deg);
 }
 
-.main-header ul > li:hover > ul.submenu {
+.main-header ul > li:hover > ul.sub-menu {
   visibility: visible;
   opacity: 1;
   top: 100%;
