@@ -132,7 +132,7 @@ function buson_cpt() {
         'show_ui'            => true,
         'show_in_menu'       => true,
         'query_var'          => true,
-        'rewrite'            => array( 'slug' => 'cases' ),
+        'rewrite'            => array( 'slug' => 'case' ),
         'capability_type'    => 'post',
         'has_archive'        => true,
         'hierarchical'       => false,
@@ -143,3 +143,64 @@ function buson_cpt() {
     register_post_type( 'cases', $args );
 }
 add_action('init', 'buson_cpt');
+
+
+// Register Sidebar
+function buson_sidebar() {
+
+    // Footer 1
+    register_sidebar( array(
+        'name'          => __( 'Footer Widget 1', 'buson' ),
+        'id'            => 'footer-1',
+        'description'   => __( 'Widgets in this area will be shown on footer.', 'buson' ),
+        'before_widget' => '<li id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</li>',
+        'before_title'  => '<h4>',
+        'after_title'   => '</h4>',
+    ) );
+
+    // Footer 2
+    register_sidebar( array(
+        'name'          => __( 'Footer Widget 2', 'buson' ),
+        'id'            => 'footer-2',
+        'description'   => __( 'Widgets in this area will be shown on footer.', 'buson' ),
+        'before_widget' => '<li id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</li>',
+        'before_title'  => '<h4>',
+        'after_title'   => '</h4>',
+    ) );
+}
+add_action('widgets_init', 'buson_sidebar');
+
+
+// Buson Options Page
+
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page(array(
+		'page_title' 	=> __('Theme General Settings', 'buson'),
+		'menu_title'	=> __('Theme Settings', 'buson'),
+		'menu_slug' 	=> 'theme-general-settings',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false
+	));
+	
+	acf_add_options_sub_page(array(
+		'page_title' 	=> __('Theme Header Settings', 'buson'),
+		'menu_title'	=> __('Header', 'buson'),
+		'parent_slug'	=> 'theme-general-settings',
+	));
+
+    acf_add_options_sub_page(array(
+		'page_title' 	=> __('Theme About Settings', 'buson'),
+		'menu_title'	=> __('About', 'buson'),
+		'parent_slug'	=> 'theme-general-settings',
+	));
+	
+	acf_add_options_sub_page(array(
+		'page_title' 	=> __('Theme Footer Settings', 'buson'),
+		'menu_title'	=> __('Footer', 'buson'),
+		'parent_slug'	=> 'theme-general-settings',
+	));
+	
+}

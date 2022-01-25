@@ -1,3 +1,8 @@
+
+<?php $footer_about = get_field('footer_about', 'option');
+
+
+?>
 <footer>
        <!-- Footer Start-->
        <div class="footer-area footer-padding">
@@ -8,11 +13,11 @@
                         <div class="single-footer-caption mb-30">
                              <!-- logo -->
                             <div class="footer-logo">
-                                <a href="index.html"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo/logo2_footer.png" alt=""></a>
+                                <a href="index.html"><img src="<?php echo $footer_about['footer_logo']['url'];?>" alt=""></a>
                             </div>
                             <div class="footer-tittle">
                                 <div class="footer-pera">
-                                    <p>Lorem ipsum dolor sit amet, adipiscing elit, sed do eiusmod</p>
+                                    <p><?php echo $footer_about['footer_description'];?></p>
                                </div>
                             </div>
                             <!-- social -->
@@ -28,28 +33,20 @@
                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-5">
                        <div class="single-footer-caption mb-50">
                            <div class="footer-tittle">
-                               <h4>Company</h4>
-                               <ul>
-                                   <li><a href="index.html">Home</a></li>
-                                   <li><a href="about.html">About Us</a></li>
-                                   <li><a href="single-blog.html">Services</a></li>
-                                   <li><a href="#">Cases</a></li>
-                                   <li><a href="contact.html">  Contact Us</a></li>
-                               </ul>
+                               <?php if(is_active_sidebar('footer-1')) {
+                                    dynamic_sidebar( 'footer-1' );
+                                    }
+                               ?>
                            </div>
                        </div>
                    </div>
                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-7">
                        <div class="single-footer-caption mb-50">
                            <div class="footer-tittle">
-                               <h4>Services</h4>
-                               <ul>
-                                   <li><a href="#">Commercial Cleaning</a></li>
-                                   <li><a href="#">Office Cleaning</a></li>
-                                   <li><a href="#">Building Cleaning</a></li>
-                                   <li><a href="#">Floor Cleaning</a></li>
-                                   <li><a href="#">Apartment Cleaning</a></li>
-                               </ul>
+                                <?php if(is_active_sidebar('footer-1')) {
+                                    dynamic_sidebar( 'footer-2' );
+                                    }
+                               ?>
                            </div>
                        </div>
                    </div>

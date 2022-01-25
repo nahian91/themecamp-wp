@@ -35,17 +35,25 @@
                        <div class="col-xl-12">
                             <div class="row d-flex justify-content-between align-items-center">
                                 <div class="header-info-left">
+                                    <?php
+                                        $header_address = get_field('header_address', 'option');
+                                        $header_email = get_field('header_email', 'option');
+                                    ?>
                                     <ul>     
-                                        <li><i class="fas fa-map-marker-alt"></i>65/A, 17th floor, Kings land, New York</li>
-                                        <li><i class="fas fa-envelope"></i>info@consulting.com</li>
+                                        <li><i class="fas fa-map-marker-alt"></i> <?php echo $header_address;?></li>
+                                        <li><i class="fas fa-envelope"></i><?php echo $header_email;?></li>
                                     </ul>
                                 </div>
                                 <div class="header-info-right">
-                                    <ul class="header-social">    
-                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                       <li> <a href="#"><i class="fab fa-google-plus-g"></i></a></li>
+                                    <ul class="header-social">   
+                                        <?php
+                                            $header_socials = get_field('header_socials', 'option');
+                                            foreach($header_socials as $header_social) {
+                                        ?>
+                                                <li><a href="<?php echo $header_social['header_social_link'];?>"><i class="<?php echo $header_social['header_social_icon']['value'];?>"></i></a></li>
+                                        <?php
+                                            }
+                                        ?> 
                                     </ul>
                                 </div>
                             </div>
