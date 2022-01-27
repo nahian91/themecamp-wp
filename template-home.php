@@ -76,7 +76,7 @@ get_header(); ?>
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-tittle text-center">
-                            <h2>Our Services</h2>
+                            <h2><?php echo esc_html__('Our Services', 'buson');?></h2>
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,7 @@ get_header(); ?>
                         <div class="col-xl-4 col-lg-4 col-md-6">
                             <div class="single-services text-center">
                                 <div class="services-icon">
-                                    <img src="<?php echo the_post_thumbnail_url();?>" alt="<?php the_title();?>">
+                                    <img src="<?php echo esc_url(the_post_thumbnail_url());?>" alt="<?php the_title();?>">
                                 </div>
                                 <div class="services-caption">
                                     <h4><?php the_title();?></h4>

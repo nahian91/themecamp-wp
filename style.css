@@ -6,3 +6,14 @@ Author URI: htts://jsbangladesh.org/buson
 Description: Theme Description
 Text Domain: buson
 */
+
+.posts-list img {
+  max-width: 100%;
+}
+.page-not-found {
+  text-align: center;
+  padding: 60px 0;
+}
+.main-header .main-menu ul li.current-menu-item a {
+  color: #ff656a;
+}

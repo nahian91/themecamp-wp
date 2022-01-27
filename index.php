@@ -23,8 +23,8 @@
                                     <div class="blog_item_img">
                                         <?php the_post_thumbnail('', array('class' => 'card-img rounded-0'));?>
                                         <a href="#" class="blog_item_date">
-                                            <h3>15</h3>
-                                            <p>Jan</p>
+                                            <h3><?php echo get_the_date( 'j' );?></h3>
+                                            <p><?php echo get_the_date( 'M' );?></p>
                                         </a>
                                     </div>
 
@@ -34,8 +34,8 @@
                                         </a>
                                         <?php the_excerpt();?>
                                         <ul class="blog-info-link">
-                                            <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                            <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                            <li><i class="fa fa-user"></i> <?php the_category( ', ' ); ?></li>
+                                            <li><a href="#"><i class="fa fa-comments"></i> <?php echo get_comments_number();?> Comments</a></li>
                                         </ul>
                                     </div>
                                 </article>
@@ -68,7 +68,12 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
-                        <aside class="single_sidebar_widget search_widget">
+
+                        <?php if(is_active_sidebar('sidebar')) {
+                            dynamic_sidebar( 'sidebar' );
+                            }
+                        ?>
+                        <!-- <aside class="single_sidebar_widget search_widget">
                             <form action="#">
                                 <div class="form-group">
                                     <div class="input-group mb-3">
@@ -245,7 +250,7 @@
                                 <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
                                     type="submit">Subscribe</button>
                             </form>
-                        </aside>
+                        </aside> -->
                     </div>
                 </div>
             </div>

@@ -32,12 +32,14 @@
                   </div>
                   <div class="navigation-area">
                      <div class="row">
-                        <div
-                           class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                        <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                           <?php
+                              if($prev_post = get_previous_post()) {
+                                 $prev_post_thumb = get_the_post_thumbnail($prev_post->ID, 'thumbnail');
+                                 $prev_post_title = get_the_title($prev_post->ID);
+                              ?>
                            <div class="thumb">
-                              <a href="#">
-                                 <img class="img-fluid" src="assets/img/post/preview.png" alt="">
-                              </a>
+                              <?php previous_post_link('%link', $prev_post_thumb); ?>
                            </div>
                            <div class="arrow">
                               <a href="#">
@@ -45,162 +47,71 @@
                               </a>
                            </div>
                            <div class="detials">
-                              <p>Prev Post</p>
-                              <a href="#">
-                                 <h4>Space The Final Frontier</h4>
-                              </a>
+                              <p><?php echo esc_html__('Prev Post', 'buson');?></p>
+                              <h4><?php previous_post_link('%link', $prev_post_title); ?></h4>
                            </div>
+                           <?php
+                              }
+                           ?>  
                         </div>
-                        <div
-                           class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
-                           <div class="detials">
-                              <p>Next Post</p>
-                              <a href="#">
-                                 <h4>Telescopes 101</h4>
-                              </a>
-                           </div>
-                           <div class="arrow">
-                              <a href="#">
-                                 <span class="lnr text-white ti-arrow-right"></span>
-                              </a>
-                           </div>
-                           <div class="thumb">
-                              <a href="#">
-                                 <img class="img-fluid" src="assets/img/post/next.png" alt="">
-                              </a>
-                           </div>
+                        <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                           <?php
+                              if($next_post = get_next_post()) {
+                                 $next_post_thumb = get_the_post_thumbnail($next_post->ID, 'thumbnail');
+                                 $next_post_title = get_the_title($next_post->ID);
+                              ?>
+                              <div class="detials">
+                                 <p><?php echo esc_html__('Next Post', 'buson');?></p>
+                                 <h4><?php next_post_link('%link', $next_post_title); ?></h4>
+                              </div>
+                              <div class="arrow">
+                                 <a href="#">
+                                    <span class="lnr text-white ti-arrow-right"></span>
+                                 </a>
+                              </div>
+                              <div class="thumb">
+                                 <?php next_post_link('%link', $next_post_thumb); ?>
+                              </div>
+                              <?php
+                                 }  
+                              ?>                           
                         </div>
                      </div>
                   </div>
                </div>
                <div class="blog-author">
                   <div class="media align-items-center">
-                     <img src="assets/img/blog/author.png" alt="">
+                     <?php 
+                        $author_id = $post->post_author;
+                        $author_name = get_the_author_meta('display_name', $author_id);
+                        $author_desc = get_the_author_meta('user_description', $author_id);
+                        $author_avatar = get_avatar_url($author_id);
+                     ?>
+                     <img src="<?php echo $author_avatar;?>" alt="<?php echo $author_name;?>">
                      <div class="media-body">
                         <a href="#">
-                           <h4>Harvard milan</h4>
+                           <h4><?php echo $author_name;?></h4>
                         </a>
-                        <p>Second divided from form fish beast made. Every of seas all gathered use saying you're, he
-                           our dominion twon Second divided from</p>
+                        <p><?php echo $author_desc;?></p>
                      </div>
                   </div>
                </div>
                <div class="comments-area">
-                  <h4>05 Comments</h4>
-                  <div class="comment-list">
-                     <div class="single-comment justify-content-between d-flex">
-                        <div class="user justify-content-between d-flex">
-                           <div class="thumb">
-                              <img src="assets/img/comment/comment_1.png" alt="">
-                           </div>
-                           <div class="desc">
-                              <p class="comment">
-                                 Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                 Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-                              </p>
-                              <div class="d-flex justify-content-between">
-                                 <div class="d-flex align-items-center">
-                                    <h5>
-                                       <a href="#">Emilly Blunt</a>
-                                    </h5>
-                                    <p class="date">December 4, 2017 at 3:12 pm </p>
-                                 </div>
-                                 <div class="reply-btn">
-                                    <a href="#" class="btn-reply text-uppercase">reply</a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="comment-list">
-                     <div class="single-comment justify-content-between d-flex">
-                        <div class="user justify-content-between d-flex">
-                           <div class="thumb">
-                              <img src="assets/img/comment/comment_2.png" alt="">
-                           </div>
-                           <div class="desc">
-                              <p class="comment">
-                                 Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                 Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-                              </p>
-                              <div class="d-flex justify-content-between">
-                                 <div class="d-flex align-items-center">
-                                    <h5>
-                                       <a href="#">Emilly Blunt</a>
-                                    </h5>
-                                    <p class="date">December 4, 2017 at 3:12 pm </p>
-                                 </div>
-                                 <div class="reply-btn">
-                                    <a href="#" class="btn-reply text-uppercase">reply</a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="comment-list">
-                     <div class="single-comment justify-content-between d-flex">
-                        <div class="user justify-content-between d-flex">
-                           <div class="thumb">
-                              <img src="assets/img/comment/comment_3.png" alt="">
-                           </div>
-                           <div class="desc">
-                              <p class="comment">
-                                 Multiply sea night grass fourth day sea lesser rule open subdue female fill which them
-                                 Blessed, give fill lesser bearing multiply sea night grass fourth day sea lesser
-                              </p>
-                              <div class="d-flex justify-content-between">
-                                 <div class="d-flex align-items-center">
-                                    <h5>
-                                       <a href="#">Emilly Blunt</a>
-                                    </h5>
-                                    <p class="date">December 4, 2017 at 3:12 pm </p>
-                                 </div>
-                                 <div class="reply-btn">
-                                    <a href="#" class="btn-reply text-uppercase">reply</a>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="comment-form">
-                  <h4>Leave a Reply</h4>
-                  <form class="form-contact comment_form" action="#" id="commentForm">
-                     <div class="row">
-                        <div class="col-12">
-                           <div class="form-group">
-                              <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
-                                 placeholder="Write Comment"></textarea>
-                           </div>
-                        </div>
-                        <div class="col-sm-6">
-                           <div class="form-group">
-                              <input class="form-control" name="name" id="name" type="text" placeholder="Name">
-                           </div>
-                        </div>
-                        <div class="col-sm-6">
-                           <div class="form-group">
-                              <input class="form-control" name="email" id="email" type="email" placeholder="Email">
-                           </div>
-                        </div>
-                        <div class="col-12">
-                           <div class="form-group">
-                              <input class="form-control" name="website" id="website" type="text" placeholder="Website">
-                           </div>
-                        </div>
-                     </div>
-                     <div class="form-group">
-                        <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send Message</button>
-                     </div>
-                  </form>
-               </div>
+
+                  <?php
+                     // If comments are open or we have at least one comment, load up the comment template.
+                     if ( comments_open() || get_comments_number() ) :
+                        comments_template();
+                     endif;
+                  ?>
             </div>
             <div class="col-lg-4">
                <div class="blog_right_sidebar">
-                  <aside class="single_sidebar_widget search_widget">
+                  <?php if(is_active_sidebar('sidebar')) {
+                        dynamic_sidebar( 'sidebar' );
+                     }
+                  ?>
+                  <!-- <aside class="single_sidebar_widget search_widget">
                      <form action="#">
                         <div class="form-group">
                            <div class="input-group mb-3">
@@ -259,7 +170,7 @@
                   <aside class="single_sidebar_widget popular_post_widget">
                      <h3 class="widget_title">Recent Post</h3>
                      <div class="media post_item">
-                        <img src="assets/img/post/post_1.png" alt="post">
+                        <img src="<?php echo get_template_directory_uri();?>/assets/img/post/post_1.png" alt="post">
                         <div class="media-body">
                            <a href="single-blog.html">
                               <h3>From life was you fish...</h3>
@@ -268,7 +179,7 @@
                         </div>
                      </div>
                      <div class="media post_item">
-                        <img src="assets/img/post/post_2.png" alt="post">
+                        <img src="<?php echo get_template_directory_uri();?>/assets/img/post/post_2.png" alt="post">
                         <div class="media-body">
                            <a href="single-blog.html">
                               <h3>The Amazing Hubble</h3>
@@ -277,7 +188,7 @@
                         </div>
                      </div>
                      <div class="media post_item">
-                        <img src="assets/img/post/post_3.png" alt="post">
+                        <img src="<?php echo get_template_directory_uri();?>/assets/img/post/post_3.png" alt="post">
                         <div class="media-body">
                            <a href="single-blog.html">
                               <h3>Astronomy Or Astrology</h3>
@@ -286,7 +197,7 @@
                         </div>
                      </div>
                      <div class="media post_item">
-                        <img src="assets/img/post/post_4.png" alt="post">
+                        <img src="<?php echo get_template_directory_uri();?>/assets/img/post/post_4.png" alt="post">
                         <div class="media-body">
                            <a href="single-blog.html">
                               <h3>Asteroids telescope</h3>
@@ -329,32 +240,32 @@
                      <ul class="instagram_row flex-wrap">
                         <li>
                            <a href="#">
-                              <img class="img-fluid" src="assets/img/post/post_5.png" alt="">
+                              <img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/post/post_5.png" alt="">
                            </a>
                         </li>
                         <li>
                            <a href="#">
-                              <img class="img-fluid" src="assets/img/post/post_6.png" alt="">
+                              <img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/post/post_6.png" alt="">
                            </a>
                         </li>
                         <li>
                            <a href="#">
-                              <img class="img-fluid" src="assets/img/post/post_7.png" alt="">
+                              <img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/post/post_7.png" alt="">
                            </a>
                         </li>
                         <li>
                            <a href="#">
-                              <img class="img-fluid" src="assets/img/post/post_8.png" alt="">
+                              <img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/post/post_8.png" alt="">
                            </a>
                         </li>
                         <li>
                            <a href="#">
-                              <img class="img-fluid" src="assets/img/post/post_9.png" alt="">
+                              <img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/post/post_9.png" alt="">
                            </a>
                         </li>
                         <li>
                            <a href="#">
-                              <img class="img-fluid" src="assets/img/post/post_10.png" alt="">
+                              <img class="img-fluid" src="<?php echo get_template_directory_uri();?>/assets/img/post/post_10.png" alt="">
                            </a>
                         </li>
                      </ul>
@@ -369,7 +280,7 @@
                         <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
                            type="submit">Subscribe</button>
                      </form>
-                  </aside>
+                  </aside> -->
                </div>
             </div>
          </div>

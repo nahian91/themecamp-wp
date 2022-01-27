@@ -43,7 +43,7 @@
                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-7">
                        <div class="single-footer-caption mb-50">
                            <div class="footer-tittle">
-                                <?php if(is_active_sidebar('footer-1')) {
+                                <?php if(is_active_sidebar('footer-2')) {
                                     dynamic_sidebar( 'footer-2' );
                                     }
                                ?>
@@ -55,7 +55,7 @@
                            <div class="footer-tittle">
                                <h4>Get in Touch</h4>
                                <ul>
-                                <li><a href="#">152-515-6565</a></li>
+                                <li><a href="tel:152-515-6565">152-515-6565</a></li>
                                 <li><a href="#"> Demomail@gmail.com</a></li>
                                 <li><a href="#">New Orleans, USA</a></li>
                             </ul>
